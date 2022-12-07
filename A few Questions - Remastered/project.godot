@@ -1,0 +1,85 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "AudioStreamPlayer",
+"class": "BackgroundMusic",
+"language": "GDScript",
+"path": "res://Scripts/Music/BackgroundMusic.gd"
+}, {
+"base": "Node2D",
+"class": "ECG",
+"language": "GDScript",
+"path": "res://Scripts/SystemMain/ECG.gd"
+}, {
+"base": "Node2D",
+"class": "Note",
+"language": "GDScript",
+"path": "res://Scripts/Files/Note.gd"
+}, {
+"base": "Node",
+"class": "Suspect",
+"language": "GDScript",
+"path": "res://Scripts/Suspects/Suspect.gd"
+}, {
+"base": "Note",
+"class": "SuspectFile",
+"language": "GDScript",
+"path": "res://Scripts/Files/SuspectFile.gd"
+}, {
+"base": "Note",
+"class": "Transcript",
+"language": "GDScript",
+"path": "res://Scripts/Files/Transcript.gd"
+} ]
+_global_script_class_icons={
+"BackgroundMusic": "",
+"ECG": "",
+"Note": "",
+"Suspect": "",
+"SuspectFile": "",
+"Transcript": ""
+}
+
+[application]
+
+config/name="A Few Questions - Remastered"
+run/main_scene="res://Scenes/Main.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+System="*res://Scripts/SystemMain/System.gd"
+Detective="*res://Scripts/Suspects/Detective.gd"
+James="*res://Scripts/Suspects/James.gd"
+Lisa="*res://Scripts/Suspects/Lisa.gd"
+Hobo="*res://Scripts/Suspects/Hobo.gd"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/size/borderless=true
+window/size/fullscreen=true
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[input]
+
+click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

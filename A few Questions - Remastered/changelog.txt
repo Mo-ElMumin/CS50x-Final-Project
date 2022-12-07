@@ -1,0 +1,11 @@
+Remastered Change log:
+3 new endings added!
+Screen size increased to 720p 
+Completely redesigned file and evidence system
+Improved interrogation system and heartrate monitor 
+improved font readability
+Added Volume settings 
+Added background music
+Added volume controls in interrogation scene 
+Added psycological assessments in interrogation
+

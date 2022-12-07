@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Fonts/JMHTypewriterLarge.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/Case/Over.gd" type="Script" id=2]
+
+[node name="OverGUI" type="Control"]
+margin_right = 214.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 220, 50 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shadow" type="ColorRect" parent="."]
+margin_right = 221.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 220, 52 )
+color = Color( 0, 0, 0, 0.427451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="MenuButton" parent="."]
+margin_right = 200.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 220, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "Files"
+flat = false
+switch_on_hover = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

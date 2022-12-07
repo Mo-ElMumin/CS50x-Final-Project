@@ -1,0 +1,77 @@
+[gd_scene format=2]
+
+[node name="Grid" type="Node2D"]
+
+[node name="Black" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.137255, 0.141176, 0.14902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line2D0" type="Line2D" parent="."]
+position = Vector2( 0, 10 )
+points = PoolVector2Array( -0.159103, -0.465828, 1280.15, -0.458164 )
+width = 5.0
+default_color = Color( 0.482353, 0.490196, 0.537255, 1 )
+
+[node name="Line2D1" type="Line2D" parent="."]
+position = Vector2( 0, 80 )
+points = PoolVector2Array( -0.159103, -0.465828, 1280.15, -0.458164 )
+width = 5.0
+default_color = Color( 0.482353, 0.490196, 0.537255, 1 )
+
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2( 0, 150 )
+points = PoolVector2Array( -0.159103, -0.465828, 1280.15, -0.458164 )
+width = 5.0
+default_color = Color( 0.482353, 0.490196, 0.537255, 1 )
+
+[node name="Line2D3" type="Line2D" parent="."]
+position = Vector2( 0, 220 )
+points = PoolVector2Array( -0.159103, -0.465828, 1280.15, -0.458164 )
+width = 5.0
+default_color = Color( 0.482353, 0.490196, 0.537255, 1 )
+
+[node name="Line2D4" type="Line2D" parent="."]
+position = Vector2( 0, 290 )
+points = PoolVector2Array( -0.159103, -0.465828, 1280.15, -0.458164 )
+width = 5.0
+default_color = Color( 0.482353, 0.490196, 0.537255, 1 )
+
+[node name="Line2D5" type="Line2D" parent="."]
+position = Vector2( 0, 360 )
+points = PoolVector2Array( -0.159103, -0.465828, 1280.15, -0.458164 )
+width = 5.0
+default_color = Color( 0.482353, 0.490196, 0.537255, 1 )
+
+[node name="Line2D6" type="Line2D" parent="."]
+position = Vector2( 0, 430 )
+points = PoolVector2Array( -0.159103, -0.465828, 1280.15, -0.458164 )
+width = 5.0
+default_color = Color( 0.482353, 0.490196, 0.537255, 1 )
+
+[node name="Line2D7" type="Line2D" parent="."]
+position = Vector2( 0, 500 )
+points = PoolVector2Array( -0.159103, -0.465828, 1280.15, -0.458164 )
+width = 5.0
+default_color = Color( 0.482353, 0.490196, 0.537255, 1 )
+
+[node name="Line2D8" type="Line2D" parent="."]
+position = Vector2( 0, 570 )
+points = PoolVector2Array( -0.159103, -0.465828, 1280.15, -0.458164 )
+width = 5.0
+default_color = Color( 0.482353, 0.490196, 0.537255, 1 )
+
+[node name="Line2D9" type="Line2D" parent="."]
+position = Vector2( 0, 640 )
+points = PoolVector2Array( -0.159103, -0.465828, 1280.15, -0.458164 )
+width = 5.0
+default_color = Color( 0.482353, 0.490196, 0.537255, 1 )
+
+[node name="Line2D10" type="Line2D" parent="."]
+position = Vector2( 0, 710 )
+points = PoolVector2Array( -0.159103, -0.465828, 1280.15, -0.458164 )
+width = 5.0
+default_color = Color( 0.482353, 0.490196, 0.537255, 1 )

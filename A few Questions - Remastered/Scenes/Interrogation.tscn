@@ -1,0 +1,547 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Assets/cardboard-sheet-paper.jpg" type="Texture" id=1]
+[ext_resource path="res://Fonts/NewsreaderMediumSmall.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/DeskTexture.jpg" type="Texture" id=3]
+[ext_resource path="res://Scenes/Grid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/ECG.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/Interrogation/Timeline.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Interrogation/Interrogation.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Interrogation/ECGInterrogation.gd" type="Script" id=8]
+[ext_resource path="res://Assets/CRTFrame.png" type="Texture" id=9]
+[ext_resource path="res://Sound/TypewriterSound.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/VolumeOff.png" type="Texture" id=11]
+[ext_resource path="res://Assets/VolumeOn.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/Music/Volume.gd" type="Script" id=13]
+[ext_resource path="res://Fonts/JMHTypewriterLarge.tres" type="DynamicFont" id=14]
+[ext_resource path="res://Fonts/NewsreaderSmall.tres" type="DynamicFont" id=15]
+[ext_resource path="res://Scripts/Music/BackgroundMusic.gd" type="Script" id=16]
+[ext_resource path="res://Sound/SlowConspiracy.wav" type="AudioStream" id=17]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 2 )
+
+[node name="Interrogation" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="DeskTexture" type="Sprite" parent="Background"]
+position = Vector2( 640.011, 359.329 )
+scale = Vector2( 2.05179, 1.73582 )
+texture = ExtResource( 3 )
+
+[node name="cardboard-sheet-paper" type="Sprite" parent="Background"]
+position = Vector2( 40.0153, 30.2619 )
+scale = Vector2( 1.63494, 1.0127 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="SuspectBox" type="Control" parent="."]
+margin_right = 787.0
+margin_bottom = 496.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hbox" type="VBoxContainer" parent="SuspectBox"]
+margin_left = 50.0
+margin_top = 47.0
+margin_right = 702.0
+margin_bottom = 432.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speechbox" type="RichTextLabel" parent="SuspectBox/Hbox"]
+margin_right = 652.0
+margin_bottom = 385.0
+size_flags_vertical = 3
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 14 )
+text = "TEST TEST TEST "
+fit_content_height = true
+scroll_active = false
+
+[node name="Tween" type="Tween" parent="SuspectBox/Hbox/Speechbox"]
+
+[node name="Mute" type="TextureButton" parent="SuspectBox"]
+margin_left = 680.201
+margin_top = 35.7165
+margin_right = 720.201
+margin_bottom = 75.7165
+toggle_mode = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerBox" type="Control" parent="."]
+margin_left = 10.0
+margin_top = 440.0
+margin_right = 1316.0
+margin_bottom = 740.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox" type="HBoxContainer" parent="PlayerBox"]
+margin_right = 1251.0
+margin_bottom = 272.0
+theme = SubResource( 1 )
+custom_constants/separation = 24
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tabs" type="TabContainer" parent="PlayerBox/HBox"]
+margin_right = 964.0
+margin_bottom = 272.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Suspect " type="Tabs" parent="PlayerBox/HBox/Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 52.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="GridContainer" type="GridContainer" parent="PlayerBox/HBox/Tabs/Suspect "]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 26.0
+margin_right = -8.0
+custom_constants/vseparation = -40
+custom_constants/hseparation = 14
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="PlayerBox/HBox/Tabs/Suspect /GridContainer"]
+margin_top = 32.0
+margin_right = 144.0
+margin_bottom = 66.0
+size_flags_vertical = 6
+text = "Name:"
+
+[node name="NameValue" type="Label" parent="PlayerBox/HBox/Tabs/Suspect /GridContainer" groups=["Values"]]
+margin_left = 158.0
+margin_top = 32.0
+margin_right = 444.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "NameValue"
+
+[node name="OccupationLabel" type="Label" parent="PlayerBox/HBox/Tabs/Suspect /GridContainer"]
+margin_left = 458.0
+margin_top = 32.0
+margin_right = 623.0
+margin_bottom = 66.0
+size_flags_vertical = 6
+text = "Occupation:"
+
+[node name="OccupationValue" type="Label" parent="PlayerBox/HBox/Tabs/Suspect /GridContainer" groups=["Values"]]
+margin_left = 637.0
+margin_top = 32.0
+margin_right = 922.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "OccupationValue"
+
+[node name="AgeLabel" type="Label" parent="PlayerBox/HBox/Tabs/Suspect /GridContainer"]
+margin_top = 91.0
+margin_right = 144.0
+margin_bottom = 125.0
+size_flags_vertical = 6
+text = "Age:"
+
+[node name="AgeValue" type="Label" parent="PlayerBox/HBox/Tabs/Suspect /GridContainer" groups=["Values"]]
+margin_left = 158.0
+margin_top = 91.0
+margin_right = 444.0
+margin_bottom = 125.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "AgeValue"
+
+[node name="EducationLabel" type="Label" parent="PlayerBox/HBox/Tabs/Suspect /GridContainer"]
+margin_left = 458.0
+margin_top = 91.0
+margin_right = 623.0
+margin_bottom = 125.0
+size_flags_vertical = 6
+text = "Education:"
+
+[node name="EducationValue" type="Label" parent="PlayerBox/HBox/Tabs/Suspect /GridContainer" groups=["Values"]]
+margin_left = 637.0
+margin_top = 91.0
+margin_right = 922.0
+margin_bottom = 125.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "EducationValue"
+
+[node name="ResidenceLabel" type="Label" parent="PlayerBox/HBox/Tabs/Suspect /GridContainer"]
+margin_top = 150.0
+margin_right = 144.0
+margin_bottom = 184.0
+size_flags_vertical = 6
+text = "Residence:"
+
+[node name="ResidenceValue" type="Label" parent="PlayerBox/HBox/Tabs/Suspect /GridContainer" groups=["Values"]]
+margin_left = 158.0
+margin_top = 150.0
+margin_right = 444.0
+margin_bottom = 184.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "ResidenceValue"
+
+[node name="NotesLabel" type="Label" parent="PlayerBox/HBox/Tabs/Suspect /GridContainer"]
+margin_left = 458.0
+margin_top = 150.0
+margin_right = 623.0
+margin_bottom = 184.0
+size_flags_vertical = 6
+text = "Notes:"
+
+[node name="NotesValue" type="Label" parent="PlayerBox/HBox/Tabs/Suspect /GridContainer" groups=["Values"]]
+margin_left = 637.0
+margin_top = 150.0
+margin_right = 922.0
+margin_bottom = 184.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "NotesValue"
+
+[node name="Evidence" type="Tabs" parent="PlayerBox/HBox/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 52.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Grid" type="GridContainer" parent="PlayerBox/HBox/Tabs/Evidence"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/vseparation = 15
+custom_constants/hseparation = 15
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VictimFile" type="Button" parent="PlayerBox/HBox/Tabs/Evidence/Grid" groups=["Evidence"]]
+margin_right = 470.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Victim File"
+
+[node name="AutoppsyReport" type="Button" parent="PlayerBox/HBox/Tabs/Evidence/Grid" groups=["Evidence"]]
+margin_left = 485.0
+margin_right = 955.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Autopsy Results"
+
+[node name="CrimeScenePhotos" type="Button" parent="PlayerBox/HBox/Tabs/Evidence/Grid" groups=["Evidence"]]
+margin_top = 77.0
+margin_right = 470.0
+margin_bottom = 139.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Crime Scene Photos"
+
+[node name="CrimeSceneAnalysis" type="Button" parent="PlayerBox/HBox/Tabs/Evidence/Grid" groups=["Evidence"]]
+margin_left = 485.0
+margin_top = 77.0
+margin_right = 955.0
+margin_bottom = 139.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Crime Scene Analysis"
+
+[node name="BloodyVase" type="Button" parent="PlayerBox/HBox/Tabs/Evidence/Grid" groups=["Evidence"]]
+margin_top = 154.0
+margin_right = 470.0
+margin_bottom = 216.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Bloody Vase"
+
+[node name="VictimsPhone" type="Button" parent="PlayerBox/HBox/Tabs/Evidence/Grid" groups=["Evidence"]]
+margin_left = 485.0
+margin_top = 154.0
+margin_right = 955.0
+margin_bottom = 216.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Victim's Phone"
+
+[node name="Psychology" type="Tabs" parent="PlayerBox/HBox/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 52.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Grid" type="GridContainer" parent="PlayerBox/HBox/Tabs/Psychology"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/vseparation = 15
+custom_constants/hseparation = 15
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Personality" type="Button" parent="PlayerBox/HBox/Tabs/Psychology/Grid" groups=["Psychology"]]
+margin_right = 470.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Personality Assessment"
+
+[node name="FamilyHistory" type="Button" parent="PlayerBox/HBox/Tabs/Psychology/Grid" groups=["Psychology"]]
+margin_left = 485.0
+margin_right = 955.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Family History Analysis"
+
+[node name="Crisis" type="Button" parent="PlayerBox/HBox/Tabs/Psychology/Grid" groups=["Psychology"]]
+margin_top = 115.0
+margin_right = 470.0
+margin_bottom = 215.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Crisis Stabilization Scale"
+
+[node name="Profile" type="Button" parent="PlayerBox/HBox/Tabs/Psychology/Grid" groups=["Psychology"]]
+margin_left = 485.0
+margin_top = 115.0
+margin_right = 955.0
+margin_bottom = 215.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Criminal Profiling"
+
+[node name="Timeline" type="Tabs" parent="PlayerBox/HBox/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 52.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 6 )
+
+[node name="TimeSlider" type="HSlider" parent="PlayerBox/HBox/Tabs/Timeline"]
+margin_left = 36.0
+margin_top = 59.0
+margin_right = 936.0
+margin_bottom = 159.0
+max_value = 12.0
+rounded = true
+tick_count = 13
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeLabel" type="Label" parent="PlayerBox/HBox/Tabs/Timeline"]
+margin_left = 10.565
+margin_top = 56.568
+margin_right = 82.565
+margin_bottom = 90.568
+text = "Time"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescLabel" type="Label" parent="PlayerBox/HBox/Tabs/Timeline"]
+margin_left = 6.0
+margin_top = 163.0
+margin_right = 950.0
+margin_bottom = 215.0
+text = "Time"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Transcript" type="Tabs" parent="PlayerBox/HBox/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 52.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Text" type="RichTextLabel" parent="PlayerBox/HBox/Tabs/Transcript"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/normal_font = ExtResource( 15 )
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SideButtons" type="VBoxContainer" parent="PlayerBox/HBox"]
+margin_left = 988.0
+margin_right = 1251.0
+margin_bottom = 272.0
+custom_constants/separation = 18
+
+[node name="Ask" type="Button" parent="PlayerBox/HBox/SideButtons"]
+margin_right = 263.0
+margin_bottom = 78.0
+size_flags_vertical = 3
+text = "Ask Question"
+
+[node name="Confront" type="Button" parent="PlayerBox/HBox/SideButtons"]
+margin_top = 96.0
+margin_right = 263.0
+margin_bottom = 175.0
+size_flags_vertical = 3
+text = "Confront"
+
+[node name="EndInterrogation" type="Button" parent="PlayerBox/HBox/SideButtons"]
+margin_top = 193.0
+margin_right = 263.0
+margin_bottom = 272.0
+size_flags_vertical = 3
+text = "End Interrogation "
+
+[node name="Block" type="ColorRect" parent="PlayerBox"]
+margin_left = -38.0
+margin_right = 1277.0
+margin_bottom = 299.0
+color = Color( 0, 0, 0, 0.623529 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ECGCRT" type="Node2D" parent="."]
+position = Vector2( 0, 24 )
+
+[node name="Grid" parent="ECGCRT" instance=ExtResource( 4 )]
+position = Vector2( 746.996, 35.9169 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="ECG" parent="ECGCRT" instance=ExtResource( 5 )]
+position = Vector2( 1130.74, 207.766 )
+script = ExtResource( 8 )
+
+[node name="CRT" type="Node2D" parent="ECGCRT"]
+
+[node name="CRTFrame" type="Sprite" parent="ECGCRT/CRT"]
+position = Vector2( 1002.71, 192.782 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 9 )
+
+[node name="VolumeLabel" type="Label" parent="ECGCRT/CRT"]
+margin_left = 1189.76
+margin_top = 16.7228
+margin_right = 1238.76
+margin_bottom = 50.7228
+text = "Volume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaxLabel" type="Label" parent="ECGCRT/CRT"]
+margin_left = 1213.54
+margin_top = 43.48
+margin_right = 1262.54
+margin_bottom = 77.48
+text = "Max
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinLabel" type="Label" parent="ECGCRT/CRT"]
+margin_left = 1210.41
+margin_top = 160.049
+margin_right = 1259.41
+margin_bottom = 191.049
+text = "Min
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeartbeatSlider" type="VSlider" parent="ECGCRT/CRT"]
+margin_left = 1172.63
+margin_top = 38.0
+margin_right = 1229.63
+margin_bottom = 174.0
+max_value = 11.0
+value = 5.0
+rounded = true
+tick_count = 10
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Typewriter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+script = ExtResource( 13 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+script = ExtResource( 16 )
+
+[node name="Tween" type="Tween" parent="BackgroundMusic"]
+
+[connection signal="pressed" from="SuspectBox/Mute" to="." method="_on_Mute_pressed"]
+[connection signal="tab_changed" from="PlayerBox/HBox/Tabs" to="." method="_on_tab_changed"]
+[connection signal="pressed" from="PlayerBox/HBox/Tabs/Evidence/Grid/VictimFile" to="." method="_on_evidence_selected" binds= [ 0 ]]
+[connection signal="pressed" from="PlayerBox/HBox/Tabs/Evidence/Grid/AutoppsyReport" to="." method="_on_evidence_selected" binds= [ 1 ]]
+[connection signal="pressed" from="PlayerBox/HBox/Tabs/Evidence/Grid/CrimeScenePhotos" to="." method="_on_evidence_selected" binds= [ 2 ]]
+[connection signal="pressed" from="PlayerBox/HBox/Tabs/Evidence/Grid/CrimeSceneAnalysis" to="." method="_on_evidence_selected" binds= [ 3 ]]
+[connection signal="pressed" from="PlayerBox/HBox/Tabs/Evidence/Grid/BloodyVase" to="." method="_on_evidence_selected" binds= [ 4 ]]
+[connection signal="pressed" from="PlayerBox/HBox/Tabs/Evidence/Grid/VictimsPhone" to="." method="_on_evidence_selected" binds= [ 5 ]]
+[connection signal="pressed" from="PlayerBox/HBox/Tabs/Psychology/Grid/Personality" to="." method="_on_psychology_selected" binds= [ 0 ]]
+[connection signal="pressed" from="PlayerBox/HBox/Tabs/Psychology/Grid/FamilyHistory" to="." method="_on_psychology_selected" binds= [ 1 ]]
+[connection signal="pressed" from="PlayerBox/HBox/Tabs/Psychology/Grid/Crisis" to="." method="_on_psychology_selected" binds= [ 2 ]]
+[connection signal="pressed" from="PlayerBox/HBox/Tabs/Psychology/Grid/Profile" to="." method="_on_psychology_selected" binds= [ 3 ]]
+[connection signal="value_changed" from="PlayerBox/HBox/Tabs/Timeline/TimeSlider" to="PlayerBox/HBox/Tabs/Timeline" method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="PlayerBox/HBox/SideButtons/Ask" to="." method="_on_Ask_pressed"]
+[connection signal="pressed" from="PlayerBox/HBox/SideButtons/Confront" to="." method="_on_Confront_pressed"]
+[connection signal="pressed" from="PlayerBox/HBox/SideButtons/EndInterrogation" to="." method="_on_EndInterrogation_pressed"]
+[connection signal="value_changed" from="ECGCRT/CRT/HeartbeatSlider" to="." method="_on_HeartbeatSlider_value_changed"]

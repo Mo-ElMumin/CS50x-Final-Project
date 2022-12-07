@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Fonts/DogtownTypeWriterMedium.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Points.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/cardboard-sheet-paper.jpg" type="Texture" id=3]
+[ext_resource path="res://Scripts/Files/TranscriptJames.gd" type="Script" id=4]
+[ext_resource path="res://Fonts/JMHTypewriterMedium.tres" type="DynamicFont" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 209, 312 )
+
+[node name="Transcript" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 419.0
+margin_bottom = 626.0
+color = Color( 0, 0, 0, 0.313726 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cardboard-sheet-paper" type="Sprite" parent="Background"]
+scale = Vector2( 1, 0.99849 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Line2D" type="Line2D" parent="Background"]
+position = Vector2( 0, 46 )
+points = PoolVector2Array( 20, 0, 350, 0 )
+width = 3.0
+default_color = Color( 0, 0, 0, 1 )
+joint_mode = 2
+
+[node name="Fields" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Fields"]
+margin_left = 22.4552
+margin_top = 19.8675
+margin_right = 382.455
+margin_bottom = 54.8675
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Interrogation Transcript"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="Fields"]
+margin_left = 20.0
+margin_top = 60.0
+margin_right = 407.0
+margin_bottom = 611.0
+custom_fonts/normal_font = ExtResource( 5 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Jane was killed by.... "
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Button" parent="Fields"]
+margin_left = 389.323
+margin_top = 4.4545
+margin_right = 408.323
+margin_bottom = 24.4545
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"sheet_areas",
+]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 208, 312 )
+shape = SubResource( 1 )
+
+[node name="Points" parent="." instance=ExtResource( 2 )]
+
+[node name="Block" type="ColorRect" parent="."]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 419.0
+margin_bottom = 626.0
+color = Color( 0, 0, 0, 0.313726 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 391.0
+margin_top = 49.0
+margin_right = 407.0
+margin_bottom = 604.0
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Fields/Close" to="." method="_on_Close_pressed"]

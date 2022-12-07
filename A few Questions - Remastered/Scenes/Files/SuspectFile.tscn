@@ -1,0 +1,228 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Points.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Fonts/DogtownTypeWriterMedium.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/cardboard-sheet-paper.jpg" type="Texture" id=3]
+[ext_resource path="res://Fonts/JMHTypewriterMedium.tres" type="DynamicFont" id=4]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 4 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 209, 312 )
+
+[node name="SuspectFile" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 419.0
+margin_bottom = 626.0
+color = Color( 0, 0, 0, 0.278431 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cardboard-sheet-paper" type="Sprite" parent="Background"]
+scale = Vector2( 1, 0.99849 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Fields" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="RichTextLabel" parent="Fields"]
+margin_left = 18.0
+margin_top = 9.0
+margin_right = 368.0
+margin_bottom = 33.0
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[u]Suspect File: Name Surname[/u]"
+text = "Suspect File: Name Surname"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="Fields"]
+margin_left = 20.0
+margin_top = 50.0
+margin_right = 376.0
+margin_bottom = 180.0
+size_flags_vertical = 3
+theme = SubResource( 1 )
+custom_constants/vseparation = 5
+custom_constants/hseparation = 10
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="Fields/Grid"]
+margin_right = 101.0
+margin_bottom = 22.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Name:"
+valign = 1
+
+[node name="NameValue" type="Label" parent="Fields/Grid"]
+margin_left = 111.0
+margin_right = 356.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "--------"
+valign = 1
+
+[node name="AgeLabel" type="Label" parent="Fields/Grid"]
+margin_top = 27.0
+margin_right = 101.0
+margin_bottom = 49.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Age:"
+valign = 1
+
+[node name="AgeValue" type="Label" parent="Fields/Grid"]
+margin_left = 111.0
+margin_top = 27.0
+margin_right = 356.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "--------:"
+valign = 1
+
+[node name="ResidenceLabel" type="Label" parent="Fields/Grid"]
+margin_top = 54.0
+margin_right = 101.0
+margin_bottom = 76.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Residence:"
+valign = 1
+
+[node name="ResidenceValue" type="Label" parent="Fields/Grid"]
+margin_left = 111.0
+margin_top = 54.0
+margin_right = 356.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "--------"
+valign = 1
+
+[node name="OccupationLabel" type="Label" parent="Fields/Grid"]
+margin_top = 81.0
+margin_right = 101.0
+margin_bottom = 103.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Occupation:"
+valign = 1
+
+[node name="OccupationValue" type="Label" parent="Fields/Grid"]
+margin_left = 111.0
+margin_top = 81.0
+margin_right = 356.0
+margin_bottom = 103.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "--------"
+valign = 1
+
+[node name="EducationLabel" type="Label" parent="Fields/Grid"]
+margin_top = 108.0
+margin_right = 101.0
+margin_bottom = 130.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Education:"
+valign = 1
+
+[node name="EducationValue" type="Label" parent="Fields/Grid"]
+margin_left = 111.0
+margin_top = 108.0
+margin_right = 356.0
+margin_bottom = 130.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "--------"
+valign = 1
+
+[node name="Notes" type="RichTextLabel" parent="Fields"]
+margin_left = 22.0
+margin_top = 193.0
+margin_right = 385.0
+margin_bottom = 491.0
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "\" blah blah blah blah blah blah blah blah blah blah blah blah \\n blah blah blah blah blah blah blah blah blah blah blah blah \\n blah blah blah blah blah blah blah blah blah blah blah blah \\n blah blah blah blah blah blah blah blah blah blah blah blah \\n\""
+text = "\" blah blah blah blah blah blah blah blah blah blah blah blah \\n blah blah blah blah blah blah blah blah blah blah blah blah \\n blah blah blah blah blah blah blah blah blah blah blah blah \\n blah blah blah blah blah blah blah blah blah blah blah blah \\n\""
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Button" parent="Fields"]
+margin_left = 389.323
+margin_top = 4.4545
+margin_right = 408.323
+margin_bottom = 24.4545
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Fields"]
+margin_left = 29.5563
+margin_top = 513.414
+margin_right = 381.556
+margin_bottom = 598.414
+custom_fonts/font = ExtResource( 2 )
+text = "Call Suspect for Interrogation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"sheet_areas",
+]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 208, 312 )
+shape = SubResource( 2 )
+
+[node name="Points" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="Block" type="ColorRect" parent="."]
+visible = false
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 419.0
+margin_bottom = 626.0
+color = Color( 0, 0, 0, 0.313726 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Fields/Close" to="." method="_on_Close_pressed"]

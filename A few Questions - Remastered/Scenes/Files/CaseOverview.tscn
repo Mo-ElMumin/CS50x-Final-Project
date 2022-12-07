@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/cardboard-sheet-paper.jpg" type="Texture" id=1]
+[ext_resource path="res://Fonts/JMHTypewriterMedium.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/DogtownTypeWriterMedium.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scripts/Files/CaseOverview.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Points.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 209, 312 )
+
+[node name="CaseOverview" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Name" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Name"]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 419.0
+margin_bottom = 626.0
+color = Color( 0, 0, 0, 0.313726 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cardboard-sheet-paper" type="Sprite" parent="Name"]
+scale = Vector2( 1, 0.99849 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Fields" type="Control" parent="."]
+margin_right = 415.0
+margin_bottom = 622.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="RichTextLabel" parent="Fields"]
+margin_left = 22.4552
+margin_top = 19.8675
+margin_right = 382.455
+margin_bottom = 54.8675
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][u] Case No. 213-4561-1103 [/u][/center] "
+text = " Case No. 213-4561-1103  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Summary" type="RichTextLabel" parent="Fields"]
+margin_left = 25.0
+margin_top = 60.0
+margin_right = 392.0
+margin_bottom = 543.0
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center][u] Summary [/u][/center]
+
+[u]Victim:[/u] Jane Forester, Female, Age 21. 
+Found dead in the bedroom of her apartment. Cause of death ruled as Blunt Force Trauma to the back of the head.
+
+[u]Scene:[/u] Apartment undisturbed. no sign of forced entry or evidence of theft. No signs of a struggle. 
+Likely Killer knew victim intimately. 
+
+[u]Suspects:[/u] Boyfriend, Flatmate and Last person to see victim alive taken into custody for interrogation. 
+
+Case handed over to Detective X for Interrogations. [right][u] signed [/u]   
+Detective M[/right]"
+text = " Summary 
+
+Victim: Jane Forester, Female, Age 21. 
+Found dead in the bedroom of her apartment. Cause of death ruled as Blunt Force Trauma to the back of the head.
+
+Scene: Apartment undisturbed. no sign of forced entry or evidence of theft. No signs of a struggle. 
+Likely Killer knew victim intimately. 
+
+Suspects: Boyfriend, Flatmate and Last person to see victim alive taken into custody for interrogation. 
+
+Case handed over to Detective X for Interrogations.  signed    
+Detective M"
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Button" parent="Fields"]
+margin_left = 389.323
+margin_top = 4.4545
+margin_right = 408.323
+margin_bottom = 24.4545
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"sheet_areas",
+]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 208, 312 )
+shape = SubResource( 1 )
+
+[node name="Points" parent="." instance=ExtResource( 5 )]
+
+[node name="Block" type="ColorRect" parent="."]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 419.0
+margin_bottom = 626.0
+color = Color( 0, 0, 0, 0.313726 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Fields/Close" to="." method="_on_Close_pressed"]
